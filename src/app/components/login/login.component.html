@@ -1,0 +1,20 @@
+<div>
+  <div *ngIf="!user" fxLayoutAlign="space-around center" class="main">
+    <p>Nice !user</p>
+    <div fxFlex="25">
+      <h2>SignIn to CM</h2>
+      <p></p>
+      <div fxLayoutAlign="center center" class="btn">
+        <button (click)="signInWithGoogle()">Google Login</button>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="user">
+    <p>Nice</p>
+    <img src="{{ user.photoUrl }}" />
+    <h4>{{ user.name }}</h4>
+    <p>{{ user.email }}</p>
+  </div>
+  <!-- <p>Hello from login</p> -->
+</div>

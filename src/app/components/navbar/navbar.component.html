@@ -1,0 +1,100 @@
+<!-- <mat-toolbar>
+  <mat-toolbar-row>
+    <span fxFlex="70">AUMS</span>
+    <button class="tlink" routerLink="/courses/all" mat-flat-button>
+      <span class="material-icons">home</span>
+    </button>
+    <button class="tlink" routerLink="/trends" mat-flat-button>Trends</button>
+    <button class="tlink" routerLink="/trainers" mat-flat-button>
+      Created Courses
+    </button>
+    <button class="tlink" routerLink="/mycourses" mat-flat-button>
+      Subscribed Courses
+    </button>
+    <button class="tlink" routerLink="/addCourse" mat-flat-button>
+      Create Course
+    </button>
+    <button class="tlink" (click)="logout()" mat-raised-button color="warn">
+      <span class="material-icons">exit_to_app</span>
+    </button>
+  </mat-toolbar-row>
+</mat-toolbar> -->
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a href="/">
+    <nav class="navbar-brand" href="/">AUCMS</nav>
+  </a>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="/addCourse">Create </a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="/trainers">Trainer </a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="/courses/all">MyCourses </a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="/trends">Trends </a>
+      </li>
+    </ul>
+    <form class="form-inline my-2 my-lg-0 mr-5">
+      <input
+        class="form-control mr-sm-2"
+        type="search"
+        placeholder="Search"
+        aria-label="Search"
+      />
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
+        Search
+      </button>
+    </form>
+    <div class="ml-4 mr-2">
+      <button
+        class="ml-2"
+        title="logout"
+        (click)="logout()"
+        type="button"
+        class="btn btn-danger"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="16"
+          height="16"
+          fill="currentColor"
+          class="bi bi-box-arrow-right"
+          viewBox="0 0 16 16"
+        >
+          <path
+            fill-rule="evenodd"
+            d="M10 12.5a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v2a.5.5 0 0 0 1 0v-2A1.5 1.5 0 0 0 9.5 2h-8A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-2a.5.5 0 0 0-1 0v2z"
+          ></path>
+          <path
+            fill-rule="evenodd"
+            d="M15.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L14.293 7.5H5.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3z"
+          ></path>
+        </svg>
+      </button>
+    </div>
+    <div class="ml-3">
+      <button type="button" title="Profile" class="btn btn-warning">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="16"
+          height="16"
+          fill="currentColor"
+          class="bi bi-person-circle"
+          viewBox="0 0 16 16"
+        >
+          <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"></path>
+          <path
+            fill-rule="evenodd"
+            d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"
+          ></path>
+        </svg>
+      </button>
+    </div>
+  </div>
+</nav>
