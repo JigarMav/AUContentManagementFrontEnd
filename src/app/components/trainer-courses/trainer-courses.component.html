@@ -24,6 +24,7 @@
         <button
           type="button"
           title="upload"
+          (click)="openAddDialog(course.courseID)"
           class="btn btn-primary"
           id="uploadbtn"
         >
@@ -40,6 +41,31 @@
             ></path>
             <path
               d="M7.646 1.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 2.707V11.5a.5.5 0 0 1-1 0V2.707L5.354 4.854a.5.5 0 1 1-.708-.708l3-3z"
+            ></path>
+          </svg>
+        </button>
+
+        <!-- file details -->
+        <button
+          type="button"
+          title="view files"
+          (click)="openDeleteDialog(course.courseID)"
+          class="btn btn-outline-danger"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            fill="currentColor"
+            class="bi bi-pencil-square"
+            viewBox="0 0 16 16"
+          >
+            <path
+              d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"
+            ></path>
+            <path
+              fill-rule="evenodd"
+              d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"
             ></path>
           </svg>
         </button>
@@ -112,60 +138,3 @@
     </tr>
   </tbody>
 </table>
-
-<!-- <table class="table-view" align="center">
-  <tr class="table-columns">
-    <th>
-      <mat-icon color="primary" title="Course">book</mat-icon>
-      <div>Course Name</div>
-    </th>
-    <th>
-      <mat-icon color="primary" title="Location">location_on</mat-icon>
-      <div>Location</div>
-    </th>
-    <th>
-      <mat-icon color="primary" title="Prerequistes">fact_check</mat-icon>
-      <div>Prerequistes</div>
-    </th>
-    <th>
-      <mat-icon color="primary" title="Skills" style="transform: scaleY(-1)"
-        >wb_incandescent</mat-icon
-      >
-      <div>Skills</div>
-    </th>
-    <th>
-      <mat-icon color="primary" title="Description">article</mat-icon>
-      <div>Description</div>
-    </th>
-    <th>
-      <mat-icon color="primary" title="Skills">note_add</mat-icon>
-      <mat-icon color="primary" title="Skills">layers_clear</mat-icon>
-      <div>subscribe</div>
-    </th>
-    <th>
-      <span class="material-icons"> delete </span>
-      <div>Delete course</div>
-    </th>
-  </tr>
-  <tr></tr>
-  <tr *ngFor="let course of courses">
-    <td>{{ course.courseName }}</td>
-    <td>{{ course.courseLocation }}</td>
-    <td>{{ course.coursePrerequisites }}</td>
-    <td>{{ course.courseSkills }}</td>
-    <td>{{ course.courseDesc }}</td>
-    <th>
-      <button>
-        <span class="material-icons"> upload </span>
-      </button>
-      <button>
-        <mat-icon color="primary" title="View/Delete">visibility </mat-icon>
-      </button>
-    </th>
-    <th>
-      <button>
-        <span class="material-icons"> delete </span>
-      </button>
-    </th>
-  </tr>
-</table> -->

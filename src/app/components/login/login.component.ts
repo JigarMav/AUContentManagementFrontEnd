@@ -45,7 +45,7 @@ export class LoginComponent implements OnInit {
     this.authService
       .signIn(GoogleLoginProvider.PROVIDER_ID)
       .then((user: SocialUser) => {
-        sessionStorage.setItem('userID', user.id);
+        // sessionStorage.setItem('userID', user.id);
         sessionStorage.setItem('idToken', user.idToken);
         sessionStorage.setItem('userEmail', user.email);
         sessionStorage.setItem('userName', user.name);
@@ -66,6 +66,8 @@ export class LoginComponent implements OnInit {
           (data: any) => {
             // data is userId returned by database.
             sessionStorage.setItem('userId', data);
+            // console.log(sessionStorage.getItem('userId'));
+
             console.log('return after login ', data);
             alert('Login Successfully');
             this.router.navigate([`/courses/all`]);

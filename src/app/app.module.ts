@@ -2,6 +2,7 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+// import { SessionStorageService } from 'angular-web-storage';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -46,6 +47,8 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatTabsModule } from '@angular/material/tabs';
+import { FileUploadComponent } from './components/file-upload/file-upload.component';
+import { FilesComponent } from './components/files/files.component';
 
 @NgModule({
   declarations: [
@@ -61,6 +64,8 @@ import { MatTabsModule } from '@angular/material/tabs';
     LineChartComponent,
     PieChartComponent,
     TrendsComponent,
+    FileUploadComponent,
+    FilesComponent,
   ],
   imports: [
     BrowserModule,

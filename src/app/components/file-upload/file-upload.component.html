@@ -1,0 +1,37 @@
+<div class="upload-material">
+  <h1 mat-dialog-title>Upload Training Material</h1>
+
+  <div mat-dialog-content>
+    <div
+      class="uploadfilecontainer"
+      (click)="fileInput.click()"
+      appDragDrop
+      (onFileDropped)="uploadFile($event)"
+    >
+      <input
+        style="display: none"
+        type="file"
+        #fileInput
+        (change)="uploadFile($event.target.files)"
+      />
+    </div>
+    <div class="files-list" *ngFor="let file of files; let i = index">
+      <p>{{ file.name }}</p>
+      <button class="delete-file" (click)="deleteAttachment(i)">Delete</button>
+    </div>
+    <div align="center">
+      <button mat-button style="color: red" (click)="onNoClick()">
+        Cancel
+      </button>
+      &nbsp;
+      <button
+        mat-stroked-button
+        color="primary"
+        (click)="sendFilesToDB()"
+        [disabled]="files.length == 0"
+      >
+        Upload Files
+      </button>
+    </div>
+  </div>
+</div>

@@ -1,9 +1,12 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { Course } from 'src/app/models/Course';
 import { CourseService } from 'src/app/services/courseService/course.service';
+import { FileUploadComponent } from '../file-upload/file-upload.component';
+import { FilesComponent } from '../files/files.component';
 
 @Component({
   selector: 'app-trainer-courses',
@@ -12,14 +15,21 @@ import { CourseService } from 'src/app/services/courseService/course.service';
 })
 export class TrainerCoursesComponent implements OnInit {
   courses: Course[];
+  trainerId: number;
   editCourse: Course;
+
   // deleteCourse: Course;
-  constructor(private courseService: CourseService, private router: Router) {}
+  constructor(
+    private courseService: CourseService,
+    private router: Router,
+    public dialog: MatDialog
+  ) {}
 
   ngOnInit(): void {
     if (!sessionStorage.getItem('idToken')) {
       this.router.navigate(['/login']);
     }
+    this.trainerId = Number(sessionStorage.getItem('userId'));
     this.getCourses();
   }
 
@@ -34,6 +44,22 @@ export class TrainerCoursesComponent implements OnInit {
         alert(error.message);
       }
     );
+  }
+
+  openAddDialog(id) {
+    this.dialog.open(FileUploadComponent, {
+      data: {
+        courseId: id,
+      },
+    });
+  }
+
+  openDeleteDialog(id) {
+    this.dialog.open(FilesComponent, {
+      data: {
+        courseId: id,
+      },
+    });
   }
 
   deleteCourse(id: number) {
