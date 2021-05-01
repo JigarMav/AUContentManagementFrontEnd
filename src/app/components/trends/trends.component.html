@@ -1,3 +1,22 @@
 <!-- <h1 align="center">Current Trends</h1> -->
-<h1>trends</h1>
-<app-bar-chart></app-bar-chart>
+<app-navbar></app-navbar>
+<div class="trends mt-4">
+  <h2 align="center">Trends Section</h2>
+  <mat-tab-group mat-align-tabs="center">
+    <mat-tab label="Training Feedback">
+      <div align="center">
+        <app-pie-chart></app-pie-chart>
+      </div>
+    </mat-tab>
+    <mat-tab label="Courses Per Month">
+      <div align="center">
+        <app-line-chart></app-line-chart>
+      </div>
+    </mat-tab>
+    <mat-tab label="Courses Per Location">
+      <div align="center">
+        <app-bar-chart></app-bar-chart>
+      </div>
+    </mat-tab>
+  </mat-tab-group>
+</div>

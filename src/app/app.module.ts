@@ -29,6 +29,24 @@ import { AddCourseComponent } from './components/add-course/add-course.component
 import { UpdateCourseComponent } from './components/update-course/update-course.component';
 import { ChartsModule } from 'ng2-charts';
 
+// material
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
+import { MatIconModule } from '@angular/material/icon';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatInputModule } from '@angular/material/input';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatSelectModule } from '@angular/material/select';
+import { MatCardModule } from '@angular/material/card';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatRadioModule } from '@angular/material/radio';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatButtonModule } from '@angular/material/button';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatTabsModule } from '@angular/material/tabs';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -52,6 +70,26 @@ import { ChartsModule } from 'ng2-charts';
     SocialLoginModule,
     HttpClientModule,
     ChartsModule,
+
+    // material
+    MatCheckboxModule,
+    MatSelectModule,
+    MatSnackBarModule,
+    MatGridListModule,
+    MatRadioModule,
+    MatDialogModule,
+    MatInputModule,
+    MatCardModule,
+    MatToolbarModule,
+    MatButtonModule,
+    MatFormFieldModule,
+    MatIconModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule,
+    MatToolbarModule,
+    MatButtonModule,
+    MatTabsModule,
   ],
   providers: [
     {
