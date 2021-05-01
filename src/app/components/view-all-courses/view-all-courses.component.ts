@@ -5,10 +5,12 @@ import {
   Output,
   ViewChild,
 } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 // import { MatTableDataSource } from '@angular/material/table';
 import { Course } from 'src/app/models/Course';
 import { CourseService } from 'src/app/services/courseService/course.service';
+import { VersionDetailComponent } from '../version-detail/version-detail.component';
 
 @Component({
   selector: 'app-view-all-courses',
@@ -30,10 +32,14 @@ export class ViewAllCoursesComponent implements OnInit {
     'version',
   ];
 
-  constructor(private courseService: CourseService, private router: Router) {}
+  constructor(
+    private courseService: CourseService,
+    private router: Router,
+    private dialog: MatDialog
+  ) {}
 
   ngOnInit(): void {
-    if (!sessionStorage.getItem('idToken')) {
+    if (!localStorage.getItem('idToken')) {
       this.router.navigate(['/login']);
     }
     this.fetchAllCourses();
@@ -45,22 +51,29 @@ export class ViewAllCoursesComponent implements OnInit {
     });
   }
 
-  deleteCourse(id: number) {
-    if (confirm('Are You Sure to delete the Course?')) {
-      this.courseService.deleteCourse(id).subscribe((response) => {
-        alert('Course Deleted Successfully');
-
-        this.ngOnInit();
-      });
-    }
-    // console.log(id);
+  getVersionDialog(id: number) {
+    this.dialog.open(VersionDetailComponent, {
+      data: {
+        courseId: id,
+      },
+    });
   }
+  // deleteCourse(id: number) {
+  //   if (confirm('Are You Sure to delete the Course?')) {
+  //     this.courseService.deleteCourse(id).subscribe((response) => {
+  //       alert('Course Deleted Successfully');
 
-  updateCourse(course: Course) {
-    // this.editCourse = course;
-    this.courseService.setCourseForEdit(course);
-    console.log('clicked !goinggg from view ', course);
-    this.router.navigate(['/updateCourse']);
-    // this.msgToSib();
-  }
+  //       this.ngOnInit();
+  //     });
+  //   }
+  //   // console.log(id);
+  // }
+
+  // updateCourse(course: Course) {
+  //   // this.editCourse = course;
+  //   this.courseService.setCourseForEdit(course);
+  //   console.log('clicked !goinggg from view ', course);
+  //   this.router.navigate(['/updateCourse']);
+  //   // this.msgToSib();
+  // }
 }

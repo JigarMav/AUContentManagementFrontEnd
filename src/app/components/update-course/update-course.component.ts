@@ -46,13 +46,13 @@ export class UpdateCourseComponent implements OnInit {
   constructor(private router: Router, private courseService: CourseService) {}
 
   ngOnInit(): void {
-    if (!sessionStorage.getItem('idToken')) {
+    if (!localStorage.getItem('idToken')) {
       this.router.navigate(['/login']);
     }
 
     this.editCourse = this.courseService.getCourseForEdit();
     this.editCourseId = this.editCourse.courseID;
-    console.log(sessionStorage.getItem('userId'));
+    console.log(localStorage.getItem('userId'));
   }
 
   onUpdateCourse(course: Course) {

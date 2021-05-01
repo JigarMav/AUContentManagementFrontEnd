@@ -26,15 +26,15 @@ export class TrainerCoursesComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    if (!sessionStorage.getItem('idToken')) {
+    if (!localStorage.getItem('idToken')) {
       this.router.navigate(['/login']);
     }
-    this.trainerId = Number(sessionStorage.getItem('userId'));
+    this.trainerId = Number(localStorage.getItem('userId'));
     this.getCourses();
   }
 
   public getCourses(): void {
-    let trainerid = Number(sessionStorage.getItem('userId'));
+    let trainerid = Number(localStorage.getItem('userId'));
     this.courseService.getCoursesForTrainer(trainerid).subscribe(
       (response: Course[]) => {
         this.courses = response;

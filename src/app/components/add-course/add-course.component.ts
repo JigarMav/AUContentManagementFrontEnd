@@ -44,10 +44,10 @@ export class AddCourseComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    if (!sessionStorage.getItem('idToken')) {
+    if (!localStorage.getItem('idToken')) {
       this.router.navigate(['/login']);
     }
-    console.log(sessionStorage.getItem('userId'));
+    console.log(localStorage.getItem('userId'));
   }
 
   // addCourse() {

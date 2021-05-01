@@ -18,7 +18,7 @@ export class FileUploadComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.trainerId = Number(sessionStorage.getItem('userId'));
+    this.trainerId = Number(localStorage.getItem('userId'));
     this.dialogRef.updateSize('80%', '80%');
   }
   onNoClick(): void {

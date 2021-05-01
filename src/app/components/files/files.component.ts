@@ -9,7 +9,7 @@ import { MaterialService } from 'src/app/services/materialService/material.servi
   styleUrls: ['./files.component.css'],
 })
 export class FilesComponent implements OnInit {
-  trainerId: number = Number(sessionStorage.getItem('userID'));
+  trainerId: number = Number(localStorage.getItem('userID'));
   unprocessedFiles = [];
   cId: number;
 
@@ -30,7 +30,7 @@ export class FilesComponent implements OnInit {
     console.log('getting material for ', this.cId);
 
     this.materialService
-      .getMaterialByCourseID(this.cId)
+      .getMaterialsByCourseID(this.cId)
       .subscribe((response: Material[]) => {
         console.log('Files recievd', response);
         this.unprocessedFiles = response;

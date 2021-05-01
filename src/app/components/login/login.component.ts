@@ -25,7 +25,7 @@ export class LoginComponent implements OnInit {
 
   // if user is already logged in send to home.
   ngOnInit(): void {
-    if (sessionStorage.getItem('idToken')) {
+    if (localStorage.getItem('idToken')) {
       this.router.navigate(['/courses/all']);
     }
 
@@ -46,11 +46,12 @@ export class LoginComponent implements OnInit {
       .signIn(GoogleLoginProvider.PROVIDER_ID)
       .then((user: SocialUser) => {
         // sessionStorage.setItem('userID', user.id);
-        sessionStorage.setItem('idToken', user.idToken);
-        sessionStorage.setItem('userEmail', user.email);
-        sessionStorage.setItem('userName', user.name);
-        sessionStorage.setItem('photo', user.photoUrl);
-        sessionStorage.setItem('provider', user.provider);
+
+        localStorage.setItem('idToken', user.idToken);
+        localStorage.setItem('userEmail', user.email);
+        localStorage.setItem('userName', user.name);
+        localStorage.setItem('photo', user.photoUrl);
+        localStorage.setItem('provider', user.provider);
 
         // create user object for database.
         let userObj: User = new User(
@@ -65,8 +66,9 @@ export class LoginComponent implements OnInit {
         this.loginService.Savesresponse(userObj).subscribe(
           (data: any) => {
             // data is userId returned by database.
-            sessionStorage.setItem('userId', data);
-            // console.log(sessionStorage.getItem('userId'));
+            localStorage.setItem('userId', data);
+            localStorage.setItem('userName', user.name);
+            console.log(localStorage.getItem('userName'));
 
             console.log('return after login ', data);
             alert('Login Successfully');

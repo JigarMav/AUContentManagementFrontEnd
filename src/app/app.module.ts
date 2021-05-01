@@ -49,6 +49,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatTabsModule } from '@angular/material/tabs';
 import { FileUploadComponent } from './components/file-upload/file-upload.component';
 import { FilesComponent } from './components/files/files.component';
+import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+import { VersionDetailComponent } from './components/version-detail/version-detail.component';
 
 @NgModule({
   declarations: [
@@ -66,6 +68,8 @@ import { FilesComponent } from './components/files/files.component';
     TrendsComponent,
     FileUploadComponent,
     FilesComponent,
+    PageNotFoundComponent,
+    VersionDetailComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,38 @@
+<h2 align="center">Materials</h2>
+<table class="table-view" align="center">
+  <tr>
+    <th>
+      <mat-icon color="primary">list</mat-icon>
+      <div>Sr No.</div>
+    </th>
+    <th>
+      <mat-icon color="primary">file_copy</mat-icon>
+      <div>File</div>
+    </th>
+    <th>
+      <mat-icon color="primary">person</mat-icon>
+      <div>Uploaded By</div>
+    </th>
+    <th>
+      <mat-icon color="primary">publish</mat-icon>
+      <div>Uploaded On</div>
+    </th>
+    <th>
+      <mat-icon color="primary">delete_forever</mat-icon>
+      <div>Deleted On</div>
+    </th>
+  </tr>
+  <tr></tr>
+  <tr *ngFor="let version of versions; let i = index">
+    <th>{{ i }}</th>
+    <td>
+      <mat-icon color="primary">file_copy</mat-icon>
+      <a (click)="downloadFile(version.file, version.fileType)">{{
+        version.fileName
+      }}</a>
+    </td>
+    <td>{{ version.trainerName }}</td>
+    <td>{{ version.created_on | date: "dd/MM/yyyy" }}</td>
+    <td>{{ version.last_modified | date: "dd/MM/yyyy" }}</td>
+  </tr>
+</table>
