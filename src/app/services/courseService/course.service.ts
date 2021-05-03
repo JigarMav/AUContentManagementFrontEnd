@@ -29,6 +29,7 @@ export class CourseService {
   getCoursesBySubscription(id: number) {
     return this.http.get<Course[]>(this.baseUrl + `/course/user/${id}`);
   }
+
   public addCourse(course: Course) {
     return this.http.post(this.baseUrl + '/course/add', course);
   }
