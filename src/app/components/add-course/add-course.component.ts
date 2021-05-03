@@ -66,19 +66,38 @@ export class AddCourseComponent implements OnInit {
   // }
 
   onAddCourse(addForm: NgForm) {
-    this.courseService
-      .addCourse(addForm.value)
-      .subscribe((response: Course) => {
-        console.log('af add', response);
+    const creator = Number(localStorage.getItem('userId'));
 
-        let tid = localStorage.getItem('userId');
-        this.trainerService
-          .addTrainerAfterCourse(tid, response.courseID)
-          .subscribe();
+    const obj = addForm.value;
 
-        addForm.reset();
-        this.router.navigate([`/courses/all`]);
-      });
+    const courseName = obj['courseName'];
+    const courseDesc = obj['courseDesc'];
+    const courseLocation = obj['courseLocation'];
+    const coursePrerequisites = obj['coursePrerequisites'];
+    const courseSkills = obj['courseSkills'];
+
+    console.log(obj);
+    const course = new Course(
+      creator,
+      courseName,
+      courseDesc,
+      courseSkills,
+      coursePrerequisites,
+      courseLocation
+    );
+    console.log(course, courseLocation);
+
+    this.courseService.addCourse(course).subscribe((response: Course) => {
+      console.log('af add', response);
+
+      // let tid = localStorage.getItem('userId');
+      this.trainerService
+        .addTrainerAfterCourse(creator, response.courseID)
+        .subscribe();
+
+      addForm.reset();
+      this.router.navigate([`/courses/all`]);
+    });
 
     console.log(addForm.value);
   }

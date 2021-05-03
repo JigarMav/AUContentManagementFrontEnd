@@ -25,6 +25,9 @@ export class CourseService {
   getCoursesForTrainer(id: number) {
     return this.http.get<Course[]>(this.baseUrl + `/course/trainer/${id}`);
   }
+  getCoursesForCreator(id: number) {
+    return this.http.get<Course[]>(this.baseUrl + `/course/creator/${id}`);
+  }
 
   getCoursesBySubscription(id: number) {
     return this.http.get<Course[]>(this.baseUrl + `/course/user/${id}`);
@@ -33,14 +36,17 @@ export class CourseService {
   public addCourse(course: Course) {
     return this.http.post(this.baseUrl + '/course/add', course);
   }
+
   public setCourseForEdit(course: Course) {
     this.editCourse = course;
   }
+
   public getCourseForEdit() {
     const temp = this.editCourse;
     this.editCourse = {} as Course;
     return temp;
   }
+
   public deleteCourse(id: number) {
     return this.http.delete(this.baseUrl + `/course/delete/${id}`);
   }

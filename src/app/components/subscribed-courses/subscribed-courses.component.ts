@@ -40,7 +40,6 @@ export class SubscribedCoursesComponent implements OnInit {
     this.subService.deleteSubscription(this.uid, cid).subscribe((res) => {
       console.log(res);
       this.fetchAllCourses();
-      // this.refresh();
     });
   }
 }
