@@ -10,7 +10,9 @@ import { Router } from '@angular/router';
 // import { MatTableDataSource } from '@angular/material/table';
 import { Course } from 'src/app/models/Course';
 import { CourseService } from 'src/app/services/courseService/course.service';
+import { SubscriptionService } from 'src/app/services/subscriptionService/subscription.service';
 import { VersionDetailComponent } from '../version-detail/version-detail.component';
+import { Subscription } from 'src/app/models/Subscription';
 
 @Component({
   selector: 'app-view-all-courses',
@@ -35,7 +37,8 @@ export class ViewAllCoursesComponent implements OnInit {
   constructor(
     private courseService: CourseService,
     private router: Router,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private subService: SubscriptionService
   ) {}
 
   ngOnInit(): void {
@@ -56,6 +59,16 @@ export class ViewAllCoursesComponent implements OnInit {
       data: {
         courseId: id,
       },
+    });
+  }
+
+  subscribeCourse(cid: number) {
+    const uid = Number(localStorage.getItem('userId'));
+    const uemail = localStorage.getItem('userEmail');
+    const sub: Subscription = new Subscription(uid, cid, uemail);
+    console.log(sub);
+    this.subService.addSubscription(sub).subscribe((response) => {
+      console.log('sub added ! for user', uid);
     });
   }
   // deleteCourse(id: number) {

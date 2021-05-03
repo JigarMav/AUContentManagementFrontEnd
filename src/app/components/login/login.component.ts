@@ -67,8 +67,8 @@ export class LoginComponent implements OnInit {
           (data: any) => {
             // data is userId returned by database.
             localStorage.setItem('userId', data);
-            localStorage.setItem('userName', user.name);
-            console.log(localStorage.getItem('userName'));
+            // localStorage.setItem('userName', user.name);
+            // console.log(localStorage.getItem('userName'));
 
             console.log('return after login ', data);
             alert('Login Successfully');

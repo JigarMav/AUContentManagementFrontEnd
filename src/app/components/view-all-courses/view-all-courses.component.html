@@ -46,7 +46,13 @@
         <!-- <button type="button" class="btn btn-danger">Unsubscribe</button> -->
       </th>
       <th>
-        <button type="button" class="btn ml-2 btn-success">Subscribe</button>
+        <button
+          type="button"
+          (click)="subscribeCourse(course.courseID)"
+          class="btn ml-2 btn-success"
+        >
+          Subscribe
+        </button>
         <!-- <button type="button" class="btn btn-danger">Unsubscribe</button> -->
       </th>
     </tr>

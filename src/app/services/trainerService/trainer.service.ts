@@ -37,9 +37,7 @@ export class TrainerService {
     return this.http.get(this.baseUrl + `/${id}`);
   }
 
-  deleteTrainer(trainerID: number, courseID: number) {
-    return this.http.delete(
-      this.baseUrl + '/delete/' + trainerID + '/' + courseID
-    );
+  deleteTrainer(uid: number, cid: number) {
+    return this.http.delete(this.baseUrl + '/delete/' + uid + '/' + cid);
   }
 }

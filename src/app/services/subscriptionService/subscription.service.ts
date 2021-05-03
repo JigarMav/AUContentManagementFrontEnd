@@ -15,6 +15,7 @@ export class SubscriptionService {
     return this.http.get<Subscription[]>(this.baseUrl + '/all');
   }
   addSubscription(sub: Subscription) {
+    console.log('add service', sub);
     return this.http.post(this.baseUrl + '/add', sub);
   }
   getSubscriptionByCourseID(id) {
@@ -22,6 +23,7 @@ export class SubscriptionService {
   }
 
   deleteSubscription(uid, cid) {
+    console.log('delete sv', uid, cid);
     return this.http.delete(this.baseUrl + '/delete/' + uid + '/' + cid);
   }
 }
