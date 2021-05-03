@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { Course } from 'src/app/models/Course';
 import { CourseService } from 'src/app/services/courseService/course.service';
 import { NgForm } from '@angular/forms';
+import { TrainerService } from 'src/app/services/trainerService/trainer.service';
 
 @Component({
   selector: 'app-add-course',
@@ -37,7 +38,11 @@ export class AddCourseComponent implements OnInit {
 
   currentCourse: Course;
   submitted = false;
-  constructor(private router: Router, private courseService: CourseService) {}
+  constructor(
+    private router: Router,
+    private courseService: CourseService,
+    private trainerService: TrainerService
+  ) {}
 
   onSubmit() {
     this.submitted = true;
@@ -59,11 +64,22 @@ export class AddCourseComponent implements OnInit {
   //     this.router.navigate([`/courses/all`]);
   //   });
   // }
+
   onAddCourse(addForm: NgForm) {
-    this.courseService.addCourse(addForm.value).subscribe((response) => {
-      addForm.reset();
-      this.router.navigate([`/courses/all`]);
-    });
+    this.courseService
+      .addCourse(addForm.value)
+      .subscribe((response: Course) => {
+        console.log('af add', response);
+
+        let tid = localStorage.getItem('userId');
+        this.trainerService
+          .addTrainerAfterCourse(tid, response.courseID)
+          .subscribe();
+
+        addForm.reset();
+        this.router.navigate([`/courses/all`]);
+      });
+
     console.log(addForm.value);
   }
 

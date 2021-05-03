@@ -2,22 +2,32 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Course } from 'src/app/models/Course';
+import { Trainer } from 'src/app/models/Trainer';
 import { environment } from 'src/environments/environment';
+import { TrainerService } from '../trainerService/trainer.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class CourseService {
   private baseUrl = environment.baseUrl;
+  trainer: Trainer = {} as Trainer;
   editCourse: Course = {} as Course;
 
-  constructor(private http: HttpClient) {}
+  constructor(
+    private http: HttpClient,
+    private trainerService: TrainerService
+  ) {}
 
   public getAllCourses(): Observable<Course[]> {
     return this.http.get<Course[]>(this.baseUrl + '/course/');
   }
   getCoursesForTrainer(id: number) {
     return this.http.get<Course[]>(this.baseUrl + `/course/trainer/${id}`);
+  }
+
+  getCoursesBySubscription(id: number) {
+    return this.http.get<Course[]>(this.baseUrl + `/course/user/${id}`);
   }
   public addCourse(course: Course) {
     return this.http.post(this.baseUrl + '/course/add', course);
