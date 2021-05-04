@@ -3,7 +3,7 @@
     <tr>
       <th>File Name</th>
       <th>&nbsp;</th>
-      <th>Delete File</th>
+      <th *ngIf="mode == 'trainer'">Delete File</th>
     </tr>
     <tr *ngFor="let files of unprocessedFiles; let i = index">
       <td>
@@ -13,14 +13,17 @@
         }}</a>
       </td>
       <th>&nbsp;</th>
-      <th>
+      <th *ngIf="mode == 'trainer'">
         <mat-icon class="red-icon" (click)="deleteTraining(files.materialID)"
           >delete_outline</mat-icon
         >
       </th>
     </tr>
   </table>
-  <h2 *ngIf="unprocessedFiles.length == 0">
-    Please upload some training material for reference
-  </h2>
+  <div *ngIf="unprocessedFiles.length == 0">
+    <h2 *ngIf="mode == 'trainer'">
+      Please upload some training material for reference
+    </h2>
+    <h2 *ngIf="mode == 'user'">No training material available !</h2>
+  </div>
 </div>

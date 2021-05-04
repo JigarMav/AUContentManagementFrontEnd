@@ -23,7 +23,12 @@
       <td>{{ course.courseSkills }}</td>
       <td>{{ course.courseDesc }}</td>
       <th>
-        <button type="button" title="Versions" class="btn btn-primary btn-lg">
+        <button
+          type="button"
+          (click)="openViewDialog(course.courseID)"
+          title="Versions"
+          class="btn btn-primary btn-lg"
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="16"

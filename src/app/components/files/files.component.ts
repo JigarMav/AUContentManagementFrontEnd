@@ -12,6 +12,7 @@ export class FilesComponent implements OnInit {
   trainerId: number = Number(localStorage.getItem('userID'));
   unprocessedFiles = [];
   cId: number;
+  mode: string;
 
   constructor(
     private materialService: MaterialService,
@@ -19,6 +20,7 @@ export class FilesComponent implements OnInit {
     @Optional() @Inject(MAT_DIALOG_DATA) public data
   ) {
     this.cId = data.courseId;
+    this.mode = data.mode;
   }
 
   ngOnInit(): void {
@@ -28,7 +30,7 @@ export class FilesComponent implements OnInit {
 
   getMaterials() {
     console.log('getting material for ', this.cId);
-
+    console.log(this.mode);
     this.materialService
       .getMaterialsByCourseID(this.cId)
       .subscribe((response: Material[]) => {

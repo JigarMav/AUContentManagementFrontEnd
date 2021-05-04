@@ -7,7 +7,6 @@ import {
 } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
-// import { MatTableDataSource } from '@angular/material/table';
 import { Course } from 'src/app/models/Course';
 import { CourseService } from 'src/app/services/courseService/course.service';
 import { SubscriptionService } from 'src/app/services/subscriptionService/subscription.service';
@@ -21,8 +20,11 @@ import { Subscription } from 'src/app/models/Subscription';
 })
 export class ViewAllCoursesComponent implements OnInit {
   courses: Course[] = [];
-  // editCourse: Course;
+  subCourses: Course[] = [];
+  uid: number;
 
+  // editCourse: Course;
+  nonSubCourses: Course[] = [];
   // columns displayed in this fashion.
   displayedColumns: string[] = [
     'name',
@@ -45,15 +47,45 @@ export class ViewAllCoursesComponent implements OnInit {
     if (!localStorage.getItem('idToken')) {
       this.router.navigate(['/login']);
     }
+    this.uid = Number(localStorage.getItem('userId'));
+
     this.fetchAllCourses();
   }
+
   public fetchAllCourses() {
     this.courseService.getAllCourses().subscribe((response: Course[]) => {
-      console.log(response);
+      console.log('all courses ', response);
       this.courses = response;
+      this.fetchAllSubscribedCourses();
     });
   }
 
+  public fetchAllSubscribedCourses() {
+    this.courseService
+      .getCoursesBySubscription(this.uid)
+      .subscribe((response: Course[]) => {
+        // console.log(response);
+
+        this.subCourses = response;
+        console.log('sub courses ', this.subCourses);
+        this.displayCourses();
+      });
+  }
+
+  displayCourses() {
+    const full = this.courses;
+    const sub = this.subCourses;
+    for (let i = full.length - 1; i >= 0; i--) {
+      for (let j = 0; j < sub.length; j++) {
+        if (full[i] && full[i].courseID === sub[j].courseID) {
+          // console.log(' sub ', full[i]);
+          full.splice(i, 1);
+        }
+      }
+    }
+    this.nonSubCourses = full;
+    console.log('displayed courses ', full);
+  }
   getVersionDialog(id: number) {
     this.dialog.open(VersionDetailComponent, {
       data: {
@@ -69,24 +101,7 @@ export class ViewAllCoursesComponent implements OnInit {
     console.log(sub);
     this.subService.addSubscription(sub).subscribe((response) => {
       console.log('sub added ! for user', uid);
+      this.fetchAllCourses();
     });
   }
-  // deleteCourse(id: number) {
-  //   if (confirm('Are You Sure to delete the Course?')) {
-  //     this.courseService.deleteCourse(id).subscribe((response) => {
-  //       alert('Course Deleted Successfully');
-
-  //       this.ngOnInit();
-  //     });
-  //   }
-  //   // console.log(id);
-  // }
-
-  // updateCourse(course: Course) {
-  //   // this.editCourse = course;
-  //   this.courseService.setCourseForEdit(course);
-  //   console.log('clicked !goinggg from view ', course);
-  //   this.router.navigate(['/updateCourse']);
-  //   // this.msgToSib();
-  // }
 }

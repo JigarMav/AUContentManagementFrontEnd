@@ -58,6 +58,7 @@ export class TrainerCoursesComponent implements OnInit {
     this.dialog.open(FilesComponent, {
       data: {
         courseId: id,
+        mode: 'trainer',
       },
     });
   }
