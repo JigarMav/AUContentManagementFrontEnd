@@ -27,6 +27,8 @@ export class LoginComponent implements OnInit {
   id: number;
   // if user is already logged in send to home.
   ngOnInit(): void {
+    document.body.className = 'selector';
+
     if (localStorage.getItem('idToken')) {
       this.router.navigate(['/courses/all']);
     }
@@ -45,6 +47,8 @@ export class LoginComponent implements OnInit {
 
   checkifTrainer(id) {
     this.trainerService.getTrainerByTrainerID(id).subscribe((response) => {
+      alert('Login Successfully');
+      this.router.navigate([`/courses/all`]);
       if (response !== -1) {
         localStorage.setItem('isTrainer', 'true');
       }
@@ -82,8 +86,6 @@ export class LoginComponent implements OnInit {
             console.log('return after login ', data);
 
             this.checkifTrainer(data);
-            alert('Login Successfully');
-            this.router.navigate([`/courses/all`]);
           },
           (error) => {
             alert("Email doesn't verified, please try again later.");

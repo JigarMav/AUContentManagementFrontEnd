@@ -3,12 +3,9 @@
 
 html,
 body {
-  height: 100%;
-}
-body {
-  /* background: #edf1f5; */
   background: white;
-  margin: 0;
   height: 100%;
+  width: 100%;
   font-family: Arial, sans-serif;
+  /* background-image: url("./assets/cream.jpg"); */
 }
