@@ -33,6 +33,9 @@ export class TrainerService {
     });
   }
 
+  getTrainerByTrainerID(id: number) {
+    return this.http.get(this.baseUrl + `/select/${id}`);
+  }
   getTrainerByCourseID(id: number) {
     return this.http.get(this.baseUrl + `/${id}`);
   }

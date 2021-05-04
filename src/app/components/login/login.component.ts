@@ -7,6 +7,7 @@ import {
 } from 'angularx-social-login';
 import { User } from 'src/app/models/User';
 import { LoginService } from 'src/app/services/loginService/login.service';
+import { TrainerService } from 'src/app/services/trainerService/trainer.service';
 
 @Component({
   selector: 'app-login',
@@ -17,12 +18,13 @@ export class LoginComponent implements OnInit {
   constructor(
     private authService: SocialAuthService,
     private router: Router,
-    private loginService: LoginService
+    private loginService: LoginService,
+    private trainerService: TrainerService
   ) {}
 
   user: SocialUser | null;
   loggedIn: boolean;
-
+  id: number;
   // if user is already logged in send to home.
   ngOnInit(): void {
     if (localStorage.getItem('idToken')) {
@@ -41,6 +43,14 @@ export class LoginComponent implements OnInit {
     );
   }
 
+  checkifTrainer(id) {
+    this.trainerService.getTrainerByTrainerID(id).subscribe((response) => {
+      if (response !== -1) {
+        localStorage.setItem('isTrainer', 'true');
+      }
+      console.log('after login for user ', localStorage.getItem('isTrainer'));
+    });
+  }
   signInWithGoogle(): void {
     this.authService
       .signIn(GoogleLoginProvider.PROVIDER_ID)
@@ -67,10 +77,11 @@ export class LoginComponent implements OnInit {
           (data: any) => {
             // data is userId returned by database.
             localStorage.setItem('userId', data);
-            // localStorage.setItem('userName', user.name);
-            // console.log(localStorage.getItem('userName'));
+            localStorage.setItem('isTrainer', 'false');
 
             console.log('return after login ', data);
+
+            this.checkifTrainer(data);
             alert('Login Successfully');
             this.router.navigate([`/courses/all`]);
           },

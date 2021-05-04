@@ -94,7 +94,8 @@ export class AddCourseComponent implements OnInit {
       this.trainerService
         .addTrainerAfterCourse(creator, response.courseID)
         .subscribe();
-
+      // make user a trainer
+      localStorage.setItem('isTrainer', 'true');
       addForm.reset();
       this.router.navigate([`/courses/all`]);
     });

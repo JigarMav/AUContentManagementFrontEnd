@@ -53,6 +53,7 @@ export class ViewAllCoursesComponent implements OnInit {
   }
 
   public fetchAllCourses() {
+    console.log('isT', localStorage.getItem('isTrainer'));
     this.courseService.getAllCourses().subscribe((response: Course[]) => {
       console.log('all courses ', response);
       this.courses = response;
