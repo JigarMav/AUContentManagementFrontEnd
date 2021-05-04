@@ -25,6 +25,8 @@ export class ViewAllCoursesComponent implements OnInit {
 
   // editCourse: Course;
   nonSubCourses: Course[] = [];
+  searchText: string;
+
   // columns displayed in this fashion.
   displayedColumns: string[] = [
     'name',
@@ -48,7 +50,7 @@ export class ViewAllCoursesComponent implements OnInit {
       this.router.navigate(['/login']);
     }
     this.uid = Number(localStorage.getItem('userId'));
-
+    console.log('window ', window);
     this.fetchAllCourses();
   }
 

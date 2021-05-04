@@ -8,9 +8,15 @@ import { SocialAuthService } from 'angularx-social-login';
   styleUrls: ['./navbar.component.css'],
 })
 export class NavbarComponent implements OnInit {
+  isTrainer: boolean = false;
+  isCreator: boolean = false;
   constructor(private authService: SocialAuthService, private router: Router) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    if (localStorage.getItem('isTrainer') === 'true') {
+      this.isTrainer = true;
+    }
+  }
 
   logout() {
     if (confirm('Want to logout?')) {

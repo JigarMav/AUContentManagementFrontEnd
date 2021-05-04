@@ -1,3 +1,6 @@
+* {
+  font-family: "Source Sans Pro", sans-serif;
+}
 .tlink {
   margin-left: 6px;
   word-wrap: break-word;
@@ -16,4 +19,18 @@ mat-toolbar {
 }
 .navbar {
   height: 80px;
+}
+
+.navbar-nav > li {
+  /* margin-left: 10px;
+  margin-right: 10px; */
+  font-size: 1rem;
+  font-weight: 400;
+}
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
 }

@@ -8,18 +8,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import {
-  GoogleLoginProvider,
-  SocialAuthServiceConfig,
-  SocialLoginModule,
-} from 'angularx-social-login';
-
-import { LoginComponent } from './components/login/login.component';
-import { NavbarComponent } from './components/navbar/navbar.component';
-
-import { ViewAllCoursesComponent } from './components/view-all-courses/view-all-courses.component';
-
-import { FormsModule } from '@angular/forms';
+// project components import
 import { TrainerCoursesComponent } from './components/trainer-courses/trainer-courses.component';
 import { SubscribedCoursesComponent } from './components/subscribed-courses/subscribed-courses.component';
 import { BarChartComponent } from './components/bar-chart/bar-chart.component';
@@ -28,7 +17,19 @@ import { PieChartComponent } from './components/pie-chart/pie-chart.component';
 import { TrendsComponent } from './components/trends/trends.component';
 import { AddCourseComponent } from './components/add-course/add-course.component';
 import { UpdateCourseComponent } from './components/update-course/update-course.component';
+import { LoginComponent } from './components/login/login.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
+import { ViewAllCoursesComponent } from './components/view-all-courses/view-all-courses.component';
+
+// packages import
+import {
+  GoogleLoginProvider,
+  SocialAuthServiceConfig,
+  SocialLoginModule,
+} from 'angularx-social-login';
+import { FormsModule } from '@angular/forms';
 import { ChartsModule } from 'ng2-charts';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
 // material
 import { MatTableModule } from '@angular/material/table';
@@ -79,6 +80,7 @@ import { VersionDetailComponent } from './components/version-detail/version-deta
     SocialLoginModule,
     HttpClientModule,
     ChartsModule,
+    Ng2SearchPipeModule,
 
     // material
     MatCheckboxModule,

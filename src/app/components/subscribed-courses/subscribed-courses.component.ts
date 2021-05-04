@@ -14,6 +14,8 @@ import { FilesComponent } from '../files/files.component';
 export class SubscribedCoursesComponent implements OnInit {
   courses: Course[] = [];
   uid: number = Number(localStorage.getItem('userId'));
+  searchText: string;
+
   constructor(
     private courseService: CourseService,
     private router: Router,

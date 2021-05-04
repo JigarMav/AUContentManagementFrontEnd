@@ -17,6 +17,7 @@ export class TrainerCoursesComponent implements OnInit {
   courses: Course[];
   trainerId: number;
   editCourse: Course;
+  searchText: string;
 
   // deleteCourse: Course;
   constructor(

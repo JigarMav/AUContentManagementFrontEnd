@@ -1,60 +1,89 @@
 <app-navbar></app-navbar>
 
-<table class="table">
-  <thead class="thead-dark">
-    <tr>
-      <th scope="col">Course Name</th>
-      <th scope="col">Location</th>
-      <th scope="col">Prerequistes</th>
-      <th scope="col">Skills</th>
-      <th scope="col">Description</th>
-      <!-- <th scope="col">Training Materials</th> -->
-      <th scope="col">Subscribe</th>
-      <!-- <th scope="col">File operations</th>
-      <th scope="col">Delete course</th>
-      <th>Send mail</th> -->
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let course of nonSubCourses">
-      <td>{{ course.courseName }}</td>
-      <td>{{ course.courseLocation }}</td>
-      <td>{{ course.coursePrerequisites }}</td>
-      <td>{{ course.courseSkills }}</td>
-      <td>{{ course.courseDesc }}</td>
-      <!-- <th>
-        <button
-          type="button"
-          title="Versions"
-          (click)="getVersionDialog(course.courseID)"
-          class="btn btn-primary btn-lg"
-        >
+<div class="tableContainer">
+  <div class="p-1 bg-light rounded rounded-pill shadow-sm mb-4">
+    <div class="input-group">
+      <input
+        type="search"
+        [(ngModel)]="searchText"
+        placeholder="Search for courses..."
+        aria-describedby="button-addon1"
+        class="form-control border-0 bg-light"
+      />
+      <div class="input-group-append">
+        <button type="button" class="btn btn-black">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="16"
             height="16"
             fill="currentColor"
-            class="bi bi-eye-fill"
+            class="bi bi-search"
             viewBox="0 0 16 16"
           >
-            <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z"></path>
             <path
-              d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z"
+              d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"
             ></path>
           </svg>
-          
         </button>
-      </th> -->
-      <th>
-        <button
-          type="button"
-          (click)="subscribeCourse(course.courseID)"
-          class="btn ml-2 btn-success"
-        >
-          Subscribe
-        </button>
-        <!-- <button type="button" class="btn btn-danger">Unsubscribe</button> -->
-      </th>
-    </tr>
-  </tbody>
-</table>
+      </div>
+    </div>
+  </div>
+  <table class="table">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">Course Name</th>
+        <th scope="col">Location</th>
+        <th scope="col">Prerequistes</th>
+        <th scope="col">Skills</th>
+        <th scope="col">Description</th>
+        <!-- <th scope="col">Training Materials</th> -->
+        <th scope="col">Subscribe</th>
+        <!-- <th scope="col">File operations</th>
+        <th scope="col">Delete course</th>
+        <th>Send mail</th> -->
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let course of nonSubCourses | filter: searchText">
+        <td>{{ course.courseName }}</td>
+        <td>{{ course.courseLocation }}</td>
+        <td>{{ course.coursePrerequisites }}</td>
+        <td>{{ course.courseSkills }}</td>
+        <td>{{ course.courseDesc }}</td>
+        <!-- <th>
+          <button
+            type="button"
+            title="Versions"
+            (click)="getVersionDialog(course.courseID)"
+            class="btn btn-primary btn-lg"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              fill="currentColor"
+              class="bi bi-eye-fill"
+              viewBox="0 0 16 16"
+            >
+              <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z"></path>
+              <path
+                d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z"
+              ></path>
+            </svg>
+            
+          </button>
+        </th> -->
+        <th>
+          <button
+            type="button"
+            (click)="subscribeCourse(course.courseID)"
+            class="btn ml-2 btn-success"
+          >
+            Subscribe
+          </button>
+          <!-- <button type="button" class="btn btn-danger">Unsubscribe</button> -->
+        </th>
+      </tr>
+    </tbody>
+  </table>
+</div>
