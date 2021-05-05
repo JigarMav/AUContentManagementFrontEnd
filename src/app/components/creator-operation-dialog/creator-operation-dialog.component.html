@@ -1,0 +1,109 @@
+<div *ngIf="mode == 'add'" class="tbl">
+  <h2 align="center">Assign New Trainer</h2>
+  <div class="input-group">
+    <div class="form-outline">
+      <input
+        type="search"
+        [(ngModel)]="searchText"
+        name="email"
+        class="form-control"
+        id="email"
+        placeholder="Enter trainer email .."
+        required
+      />
+    </div>
+    <button
+      (click)="getTrainer()"
+      type="button"
+      class="btn btn-primary"
+      aria-placeholder="Enter trainer Email ..."
+    >
+      Search
+    </button>
+    <table
+      *ngIf="trainerToAdd"
+      class="table mt-3"
+      align="center"
+      style="width: 100%"
+    >
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">Trainer Name</th>
+          <th scope="col">Trainer Email</th>
+          <th scope="col">Add Trainer</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr scope="row">
+          <td>
+            {{ trainerToAdd.userName }}
+          </td>
+          <td>
+            {{ trainerToAdd.email }}
+          </td>
+          <td>
+            <button
+              (click)="assignTrainer(trainerToAdd.userID)"
+              type="button"
+              class="btn btn-primary"
+            >
+              add trainer
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div *ngIf="mode == 'delete'" class="tbl">
+  <h2 align="center">Delete Trainers</h2>
+
+  <table class="table" align="center" style="width: 100%">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">Trainer Name</th>
+        <th scope="col">Unassign Trainer</th>
+      </tr>
+    </thead>
+
+    <tr scope="row" *ngFor="let trainer of trainers">
+      <td>
+        {{ trainer.userName }}
+      </td>
+      <td>
+        <button
+          (click)="unassignTrainer(trainer.userID)"
+          class="btn btn-danger btn-sm"
+        >
+          Delete
+        </button>
+      </td>
+    </tr>
+  </table>
+</div>
+
+<div *ngIf="mode == 'view'">
+  <table class="table" align="center" style="width: 100%">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">Trainer Name</th>
+        <th scope="col">Trainer Email</th>
+        <th scope="col">Trainer Location</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr scope="row" *ngFor="let trainer of trainers">
+        <td>
+          {{ trainer.userName }}
+        </td>
+        <td>
+          {{ trainer.email }}
+        </td>
+        <td>
+          {{ trainer.userLocation }}
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

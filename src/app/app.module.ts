@@ -52,6 +52,8 @@ import { FileUploadComponent } from './components/file-upload/file-upload.compon
 import { FilesComponent } from './components/files/files.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { VersionDetailComponent } from './components/version-detail/version-detail.component';
+import { CreatedCoursesComponent } from './components/created-courses/created-courses.component';
+import { CreatorOperationDialogComponent } from './components/creator-operation-dialog/creator-operation-dialog.component';
 
 @NgModule({
   declarations: [
@@ -71,6 +73,8 @@ import { VersionDetailComponent } from './components/version-detail/version-deta
     FilesComponent,
     PageNotFoundComponent,
     VersionDetailComponent,
+    CreatedCoursesComponent,
+    CreatorOperationDialogComponent,
   ],
   imports: [
     BrowserModule,

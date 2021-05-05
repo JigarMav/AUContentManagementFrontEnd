@@ -37,10 +37,9 @@
         <th scope="col">Prerequistes</th>
         <th scope="col">Skills</th>
         <th scope="col">Description</th>
-        <th scope="col">File operations</th>
-        <th scope="col">Update Course</th>
+        <th scope="col">Trainer operations</th>
+        <th scope="col">View Trainers</th>
         <th scope="col">Delete course</th>
-        <!-- <th>Send mail</th> -->
       </tr>
     </thead>
     <tbody>
@@ -54,33 +53,30 @@
           <!-- upload file -->
           <button
             type="button"
-            title="upload"
             (click)="openAddDialog(course.courseID)"
+            title="upload"
             class="btn btn-primary"
             id="uploadbtn"
           >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="16"
-              height="16"
-              fill="currentColor"
-              class="bi bi-upload"
-              viewBox="0 0 16 16"
-            >
-              <path
-                d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"
-              ></path>
-              <path
-                d="M7.646 1.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 2.707V11.5a.5.5 0 0 1-1 0V2.707L5.354 4.854a.5.5 0 1 1-.708-.708l3-3z"
-              ></path>
-            </svg>
+            add
           </button>
 
           <!-- file details -->
           <button
+            (click)="openDeleteDialog(course.courseID)"
             type="button"
             title="Delete/View"
-            (click)="openDeleteDialog(course.courseID)"
+            class="btn btn-danger"
+          >
+            delete
+          </button>
+        </th>
+        <th>
+          <!--  Edit-->
+          <button
+            type="button"
+            (click)="openViewDialog(course.courseID)"
+            title="View trainers"
             class="btn btn-info"
           >
             <svg
@@ -99,33 +95,6 @@
           </button>
         </th>
         <th>
-          <!--  Edit-->
-          <button
-            type="button"
-            title="Edit"
-            (click)="updateCourse(course)"
-            class="btn btn-secondary"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="16"
-              height="16"
-              fill="currentColor"
-              class="bi bi-pencil-square"
-              viewBox="0 0 16 16"
-            >
-              <path
-                d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"
-              ></path>
-              <path
-                fill-rule="evenodd"
-                d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"
-              ></path>
-            </svg>
-          </button>
-        </th>
-        <th>
-          <!-- <button   color="accent">Delete</button> -->
           <!-- Delete course -->
           <button
             type="button"
@@ -146,24 +115,6 @@
             </svg>
           </button>
         </th>
-
-        <!-- <th>
-          Send mail
-          <button type="button" class="btn btn-success">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="16"
-              height="16"
-              fill="currentColor"
-              class="bi bi-envelope"
-              viewBox="0 0 16 16"
-            >
-              <path
-                d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2zm13 2.383-4.758 2.855L15 11.114v-5.73zm-.034 6.878L9.271 8.82 8 9.583 6.728 8.82l-5.694 3.44A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.739zM1 11.114l4.758-2.876L1 5.383v5.73z"
-              ></path>
-            </svg>
-          </button>
-        </th> -->
       </tr>
     </tbody>
   </table>

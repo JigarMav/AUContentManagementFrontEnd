@@ -7,6 +7,7 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root',
 })
 export class TrainerService {
+  private root = environment.baseUrl;
   private baseUrl = environment.baseUrl + '/trainer';
   headers = new HttpHeaders({ 'Content-Type': 'application/json' });
   constructor(private http: HttpClient) {}
@@ -38,6 +39,9 @@ export class TrainerService {
   }
   getTrainerByCourseID(id: number) {
     return this.http.get(this.baseUrl + `/${id}`);
+  }
+  getTrainerByEmail(email: string) {
+    return this.http.get(this.root + '/user/' + email);
   }
 
   deleteTrainer(uid: number, cid: number) {

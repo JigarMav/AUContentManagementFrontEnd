@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AddCourseComponent } from './components/add-course/add-course.component';
+import { CreatedCoursesComponent } from './components/created-courses/created-courses.component';
 import { LoginComponent } from './components/login/login.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { SubscribedCoursesComponent } from './components/subscribed-courses/subscribed-courses.component';
@@ -18,6 +19,7 @@ const routes: Routes = [
   { path: 'trainers', component: TrainerCoursesComponent },
   { path: 'trends', component: TrendsComponent },
   { path: 'myCourses', component: SubscribedCoursesComponent },
+  { path: 'creator', component: CreatedCoursesComponent },
   { path: '**', component: PageNotFoundComponent },
 ];
 

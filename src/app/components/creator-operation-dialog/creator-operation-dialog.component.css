@@ -1,0 +1,6 @@
+.tbl {
+  width: 100%;
+  border-width: 2px;
+  border-color: grey;
+  border-radius: 10%;
+}
