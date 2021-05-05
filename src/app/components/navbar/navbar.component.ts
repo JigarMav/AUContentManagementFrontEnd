@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { SocialAuthService } from 'angularx-social-login';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
@@ -10,9 +11,16 @@ import { SocialAuthService } from 'angularx-social-login';
 export class NavbarComponent implements OnInit {
   isTrainer: boolean = false;
   isCreator: boolean = false;
-  constructor(private authService: SocialAuthService, private router: Router) {}
+  currentPath: string = '';
+
+  constructor(
+    private authService: SocialAuthService,
+    private router: Router,
+    private aRoute: ActivatedRoute
+  ) {}
 
   ngOnInit(): void {
+    console.log(this.aRoute.snapshot.routeConfig.path);
     if (localStorage.getItem('isTrainer') === 'true') {
       this.isTrainer = true;
     }

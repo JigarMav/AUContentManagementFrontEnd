@@ -1,25 +1,37 @@
 <div>
-  <table *ngIf="unprocessedFiles.length > 0" align="center">
-    <tr>
-      <th>File Name</th>
-      <th>&nbsp;</th>
-      <th *ngIf="mode == 'trainer'">Delete File</th>
-    </tr>
-    <tr *ngFor="let files of unprocessedFiles; let i = index">
+  <table
+    *ngIf="unprocessedFiles.length > 0"
+    align="center"
+    class="table"
+    align="center"
+    style="width: 100%"
+  >
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">File Name</th>
+        <th *ngIf="mode == 'trainer'" scope="col">Delete File</th>
+      </tr>
+    </thead>
+
+    <tr *ngFor="let files of unprocessedFiles; let i = index" scope="row">
       <td>
         <mat-icon color="primary">file_copy</mat-icon>
-        <a (click)="downloadFile(files.file, files.fileType)">{{
-          files.fileName
-        }}</a>
+        <a (click)="downloadFile(files.file, files.fileType)">
+          {{ files.fileName }}
+        </a>
       </td>
-      <th>&nbsp;</th>
-      <th *ngIf="mode == 'trainer'">
-        <mat-icon class="red-icon" (click)="deleteTraining(files.materialID)"
-          >delete_outline</mat-icon
+      <td>
+        <button
+          (click)="deleteTraining(files.materialID)"
+          class="btn btn-danger"
+          style="color: black"
         >
-      </th>
+          Delete
+        </button>
+      </td>
     </tr>
   </table>
+
   <div *ngIf="unprocessedFiles.length == 0">
     <h2 *ngIf="mode == 'trainer'">
       Please upload some training material for reference

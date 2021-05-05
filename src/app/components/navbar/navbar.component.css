@@ -27,6 +27,13 @@ mat-toolbar {
   font-size: 1rem;
   font-weight: 400;
 }
+.navbar-brand :hover {
+  transform: scale(1.15);
+}
+.nav-item :hover {
+  transform: scale(1.15);
+}
+
 li a {
   display: block;
   color: white;
