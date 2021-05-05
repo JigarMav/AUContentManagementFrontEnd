@@ -14,7 +14,7 @@ import {
   styleUrls: ['./pie-chart.component.css'],
 })
 export class PieChartComponent implements OnInit {
-  public pieChartLabels: Label = ['Negative', 'Positive', 'Moderate'];
+  public pieChartLabels: Label = ['C++', 'Angular', 'Java OOPS'];
   public pieChartData: SingleDataSet = [3, 70, 27];
   public pieChartType: ChartType = 'pie';
   public pieChartLegend = true;

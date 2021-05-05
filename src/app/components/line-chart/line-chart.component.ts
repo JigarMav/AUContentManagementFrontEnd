@@ -9,7 +9,7 @@ import { Label, Color } from 'ng2-charts';
 })
 export class LineChartComponent implements OnInit {
   lineChartData: ChartDataSets[] = [
-    { data: [32, 6, 3, 1, 21, 2, 0], label: 'Courses / Month' },
+    { data: [32, 6, 3, 1, 21], label: ' New Users / Month' },
   ];
 
   lineChartLabels: Label[] = [
@@ -18,8 +18,7 @@ export class LineChartComponent implements OnInit {
     'March',
     'April',
     'May',
-    'June',
-    'July',
+    // '',
   ];
 
   lineChartOptions = {

@@ -3,19 +3,19 @@
 <div class="trends mt-4">
   <h2 align="center">Trends Section</h2>
   <mat-tab-group mat-align-tabs="center">
-    <mat-tab label="Training Feedback">
+    <mat-tab label="Popular courses">
       <div align="center">
-        <app-pie-chart></app-pie-chart>
+        <app-bar-chart [seeGraph]="'students'"></app-bar-chart>
       </div>
     </mat-tab>
-    <mat-tab label="Courses Per Month">
+    <mat-tab label="New Users per Month">
       <div align="center">
         <app-line-chart></app-line-chart>
       </div>
     </mat-tab>
     <mat-tab label="Courses Per Location">
       <div align="center">
-        <app-bar-chart></app-bar-chart>
+        <app-bar-chart [seeGraph]="'location'"></app-bar-chart>
       </div>
     </mat-tab>
   </mat-tab-group>
