@@ -6,7 +6,7 @@
   width: 100%;
   height: 100%;
 
-  background-image: url("../../../assets/cream.jpg");
+  background-image: url("../../../assets/loginpage.jpg");
   background-size: 100%;
   background-size: cover;
 }
@@ -32,4 +32,10 @@
   color: white;
   text-transform: uppercase;
   font-weight: 500;
+}
+.heading {
+  font-weight: bolder;
+}
+.btn :hover {
+  transform: scale(1.15);
 }
