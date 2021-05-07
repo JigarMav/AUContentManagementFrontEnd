@@ -1,4 +1,7 @@
+import { HttpClientModule } from '@angular/common/http';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { RouterTestingModule } from '@angular/router/testing';
+import { SocialAuthService } from 'angularx-social-login';
 
 import { LoginComponent } from './login.component';
 
@@ -8,9 +11,12 @@ describe('LoginComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ LoginComponent ]
-    })
-    .compileComponents();
+      imports: [RouterTestingModule, HttpClientModule],
+      providers: [
+        { provide: SocialAuthService, useClass: SocialAuthServiceStub },
+      ],
+      declarations: [LoginComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {
@@ -23,3 +29,6 @@ describe('LoginComponent', () => {
     expect(component).toBeTruthy();
   });
 });
+class SocialAuthServiceStub {
+  signIn() {}
+}
